@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Descargar KatxiSB</title>
+    <style>
+      :root { color-scheme: light; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: #111827;
+        background: #f9fafb;
+      }
+      header {
+        background: linear-gradient(135deg, #ff6600, #111827);
+        color: #fff;
+        padding: 48px 20px;
+      }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+      header h1 { margin: 0 0 6px; font-size: 2rem; }
+      header p { margin: 0; opacity: 0.85; }
+      main { padding: 32px 0 64px; }
+      h2 { margin: 0 0 4px; font-size: 1.25rem; }
+      h3 { margin: 32px 0 8px; font-size: 1.1rem; }
+      a { color: #c2410c; }
+      .platforms {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 20px;
+      }
+      .card.mine { border: 2px solid #ff6600; }
+      .tag {
+        display: none;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #c2410c;
+      }
+      .card.mine .tag { display: block; }
+      .sub { color: #6b7280; margin: 0 0 16px; }
+      .button {
+        display: block;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+        color: #fff;
+        background: #ff6600;
+        border-radius: 10px;
+        padding: 14px 16px;
+        margin: 16px 0;
+      }
+      .button.off {
+        background: #e5e7eb;
+        color: #6b7280;
+        pointer-events: none;
+      }
+      ol { padding-left: 20px; margin: 0; }
+      li { margin-bottom: 6px; }
+      .note { color: #6b7280; font-size: 0.9rem; margin: 12px 0 0; }
+      footer { color: #6b7280; font-size: 0.85rem; padding-top: 40px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>Descargar KatxiSB</h1>
+        <p>Versión de prueba para los clubes invitados</p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="platforms">
+        <section class="card" id="ios">
+          <span class="tag">Tu dispositivo</span>
+          <h2>iPad y iPhone</h2>
+          <p class="sub">A través de TestFlight, la app de pruebas de Apple</p>
+          <a class="button off" id="ios-link" href="#">Pendiente de aprobación de Apple</a>
+          <ol>
+            <li>
+              Instala
+              <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener"
+                >TestFlight</a
+              >
+              desde la App Store.
+            </li>
+            <li>Vuelve aquí y pulsa el botón naranja.</li>
+            <li>En TestFlight, pulsa <strong>Aceptar</strong> y después <strong>Instalar</strong>.</li>
+          </ol>
+          <p class="note">Las versiones nuevas llegan solas: TestFlight te avisa.</p>
+        </section>
+
+        <section class="card" id="android">
+          <span class="tag">Tu dispositivo</span>
+          <h2>Android</h2>
+          <p class="sub">Instalación directa, sin Google Play (unos 105 MB)</p>
+          <a class="button off" id="android-link" href="#">Próximamente</a>
+          <ol>
+            <li>Pulsa el botón naranja para descargar <strong>KatxiSB.apk</strong>.</li>
+            <li>
+              Ábrelo. Si Android no deja instalarlo, pulsa <strong>Ajustes → Permitir de esta
+              fuente</strong> y vuelve atrás.
+            </li>
+            <li>
+              Si aparece Google Play Protect, pulsa <strong>Instalar de todos modos</strong>: avisa
+              porque la app no viene de Google Play.
+            </li>
+          </ol>
+          <p class="note">
+            Para actualizar, descarga el archivo otra vez desde esta página e instálalo encima: no
+            se pierde nada.
+          </p>
+        </section>
+      </div>
+
+      <h3>Después de instalarla</h3>
+      <ol>
+        <li>Abre KatxiSB y pulsa <strong>¿No tienes cuenta? Crear cuenta</strong>.</li>
+        <li>Confirma tu cuenta con el enlace que te llega por correo y entra.</li>
+        <li>
+          Pide al responsable de tu club, o escribe a
+          <a href="mailto:katxisb@gmail.com">katxisb@gmail.com</a>, que te asigne tu equipo. Hasta
+          entonces la app no muestra datos.
+        </li>
+      </ol>
+      <p class="note">
+        El partido en directo necesita una tablet en horizontal. Estadística, jornadas y partidos
+        funcionan también en el móvil.
+      </p>
+
+      <footer>
+        KatxiSB · <a href="./">Soporte y política de privacidad</a> ·
+        <a href="mailto:katxisb@gmail.com">katxisb@gmail.com</a>
+      </footer>
+    </main>
+
+    <script>
+      // Fill these in when each version is ready; an empty link keeps its button greyed out.
+      var IOS_LINK = ''; // TestFlight public link: https://testflight.apple.com/join/...
+      var ANDROID_LINK = ''; // https://github.com/katxi12/katxi12.github.io/releases/latest/download/KatxiSB.apk
+
+      function enable(id, url, label) {
+        if (!url) return;
+        var link = document.getElementById(id);
+        link.href = url;
+        link.textContent = label;
+        link.className = 'button';
+      }
+      enable('ios-link', IOS_LINK, 'Abrir en TestFlight');
+      enable('android-link', ANDROID_LINK, 'Descargar para Android');
+
+      // Highlight the visitor's own platform. iPadOS presents itself as a Mac with touch.
+      var agent = navigator.userAgent;
+      var apple = /iPhone|iPad|iPod/.test(agent) || (/Macintosh/.test(agent) && navigator.maxTouchPoints > 1);
+      var mine = apple ? 'ios' : /Android/.test(agent) ? 'android' : null;
+      if (mine) document.getElementById(mine).classList.add('mine');
+    </script>
+  </body>
+</html>
