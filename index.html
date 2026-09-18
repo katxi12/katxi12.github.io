@@ -25,6 +25,9 @@
       main { padding: 32px 0 64px; }
       h2 { margin-top: 32px; font-size: 1.25rem; }
       a { color: #c2410c; }
+      .notice { display: none; padding: 16px 20px; font-weight: 600; text-align: center; }
+      .notice.ok { display: block; background: #dcfce7; color: #14532d; }
+      .notice.bad { display: block; background: #fee2e2; color: #7f1d1d; }
       .card {
         background: #fbf8f2;
         border: 1px solid #d8cfbd;
@@ -36,6 +39,7 @@
     </style>
   </head>
   <body>
+    <div class="notice" id="notice" role="status"></div>
     <header>
       <div class="wrap">
         <h1><img src="logo.png" alt="kaNtxi" style="height:64px;display:block;margin-bottom:8px" /></h1>
@@ -156,5 +160,26 @@
 
       <footer>kaNtxi · Luis Agirre Iturbe · <a href="mailto:katxisb@gmail.com">katxisb@gmail.com</a></footer>
     </main>
+    <script>
+      // Account confirmation links from the app land here (Supabase's Site URL). Say what happened,
+      // then drop the tokens from the address bar so they do not linger in history.
+      (function () {
+        var hash = new URLSearchParams(location.hash.slice(1));
+        var query = new URLSearchParams(location.search);
+        var notice = document.getElementById('notice');
+        var error = hash.get('error_description') || query.get('error_description');
+        if (error) {
+          notice.textContent =
+            'El enlace no es válido o ha caducado. Vuelve a kaNtxi e inténtalo de nuevo, o escribe a katxisb@gmail.com.';
+          notice.className = 'notice bad';
+        } else if (hash.get('access_token') || hash.get('type') === 'signup' || query.get('code')) {
+          notice.textContent = '✓ Cuenta confirmada. Ya puedes volver a kaNtxi e iniciar sesión.';
+          notice.className = 'notice ok';
+        } else {
+          return;
+        }
+        history.replaceState(null, '', location.pathname);
+      })();
+    </script>
   </body>
 </html>
